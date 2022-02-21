@@ -1,7 +1,7 @@
 # godot第三方功能增强版
 * 提供多种2d形变动画技术方案的支持:dragonbones,spine,live2d(暂定)
 * 此仓库基于其他开源项目，我只是做一个持续集成云编译脚本
-
+[![Windows Builds](https://github.com/2439905184/Powerfull_godot/actions/workflows/windows.yml/badge.svg)](https://github.com/2439905184/Powerfull_godot/actions/workflows/windows.yml)
 ## Links
 * Homepage Godot: https://godotengine.org
 * Homepage DragonBones: http://dragonbones.com
