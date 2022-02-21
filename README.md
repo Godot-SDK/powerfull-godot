@@ -1,14 +1,16 @@
-# GDDragonBones Plugin
-Plugin module for Godot Game Engine to use DragonBones
+# godot第三方功能增强版
+* 提供多种2d形变动画技术方案的支持:dragonbones,spine,live2d(暂定)
+* 此仓库基于其他开源项目，我只是做一个持续集成云编译脚本
 
 ## Links
 * Homepage Godot: https://godotengine.org
 * Homepage DragonBones: http://dragonbones.com
-
+* Homepage spine: http://zh.esotericsoftware.com/
+* Homepage live2d: https://www.live2d.com/zh-CHS/
 #### Support Versions
 * Godot 2.1 ... Godot 3.4
 * DragonBones Pro 5.6
-
+* Spine 4.0
 #### Support Platforms
 * Windows
 * Android
