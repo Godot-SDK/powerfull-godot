@@ -21,10 +21,17 @@ jobs:
         with:
           repository: godotengine/godot
           ref: ${{env.GODOT_BASE_BRANCH}}
+      # Checkout GDDragonBones
       - uses: actions/checkout@v2
         with:
           path: modules/GDDragonBones
-
+      # Checkout spine
+      - uses: actions/checkout@v2
+        with:
+          repository: rayxuln/spine-runtime-for-godot
+          ref: spine4.0
+          path: modules/spine_runtime
+          
       - name: Load .scons_cache directory
         id: windows-editor-cache
         uses: actions/cache@v2
