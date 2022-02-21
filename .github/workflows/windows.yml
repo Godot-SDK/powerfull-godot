@@ -1,0 +1,59 @@
+name: Windows Builds
+on:
+  push:
+    branches: [ powerfull]
+  pull_request:
+    branches: [ powerfull ]
+env:
+  GODOT_BASE_BRANCH: 3.4.2-stable
+  SCONS_CACHE_MSVC_CONFIG: true
+  SCONS_CACHE_LIMIT: 4096
+  GODOT_TARGET_PLATFORM: windows
+jobs:
+  windows-editor:
+    # Windows 10 with latest image
+    runs-on: "windows-latest"
+    name: Editor
+
+    steps:
+      # Clone Godot
+      - uses: actions/checkout@v2
+        with:
+          repository: godotengine/godot
+          ref: ${{env.GODOT_BASE_BRANCH}}
+      - uses: actions/checkout@v2
+        with:
+          path: modules/GDDragonBones
+
+      - name: Load .scons_cache directory
+        id: windows-editor-cache
+        uses: actions/cache@v2
+        with:
+          path: ${{github.workspace}}/.scons_cache/
+          key: ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+          restore-keys: |
+            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}-${{github.sha}}
+            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}-${{github.ref}}
+            ${{github.job}}-${{env.GODOT_BASE_BRANCH}}
+      - name: Set up Python 3.x
+        uses: actions/setup-python@v2
+        with:
+          # Semantic version range syntax or exact version of a Python version
+          python-version: '3.x'
+          # Optional - x64 or x86 architecture, defaults to x64
+          architecture: 'x64'
+      - name: Configuring Python packages
+        run: |
+          python -c "import sys; print(sys.version)"
+          python -m pip install scons pywin32
+          python --version
+          scons --version
+      - name: Compilation
+        env:
+          SCONS_CACHE: ${{github.workspace}}/.scons_cache/
+        run: |
+          scons -j3 verbose=yes warnings=all werror=yes platform=${{env.GODOT_TARGET_PLATFORM}} tools=yes tests=no target=release_debug 
+      - uses: actions/upload-artifact@v2
+        with:
+          name: godot.tools.exe
+          path: bin/godot.windows.opt.tools.64.exe
