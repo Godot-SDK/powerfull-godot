@@ -31,10 +31,11 @@ jobs:
           echo "检查文件"
           cd GDDragonBones
           ls
-      #复制文件并按照规范命名
+      #复制文件并按照规范命名 此处-R参数不要修改
       - name: 复制文件夹
         run: |
-          Copy-Item -Destination GDDragonBones/gddragonbones/* modules/gddragonbones
+          echo "递归复制"
+          Copy-Item -Recurse  GDDragonBones/gddragonbones/ modules/gddragonbones
           cd modules/GDDragonBones
           ls
       # Checkout spine
