@@ -31,12 +31,9 @@ jobs:
           ls
           tree
       #复制文件并按照规范命名
-      - uses: canastro/copy-file-action@master
-        with:
-          source: "GDDragonBones/gddragonbones"
-          target: "modules/GDDragonBones"
-      - name: 检查龙骨文件
+      - name: 复制文件夹
         run: |
+          Copy-Item .\GDDragonBones\dragonbones\* .\modules\GDDragonBones
           cd modules/GDDragonBones
           ls
       # Checkout spine
