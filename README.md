@@ -1,5 +1,5 @@
 # godot第三方功能增强版
-[![Windows Builds](https://github.com/2439905184/Powerfull_godot/actions/workflows/windows.yml/badge.svg)](https://github.com/2439905184/Powerfull_godot/actions/workflows/windows.yml)
+[![Windows Builds](https://github.com/2439905184/powerfull-godot/actions/workflows/windows.yml/badge.svg)](https://github.com/2439905184/powerfull-godot/actions/workflows/windows.yml)
 ### 提供多种2d形变动画技术方案的支持:
 * dragonbones(已集成),
 * spine(已集成),
