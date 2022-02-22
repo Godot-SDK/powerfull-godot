@@ -34,7 +34,7 @@ jobs:
       #复制文件并按照规范命名
       - name: 复制文件夹
         run: |
-          Copy-Item ${{github.workspace}}/GDDragonBones/gddragonbones/* ${{github.workspace}}/modules/GDDragonBones
+          Copy-Item ${{github.workspace}}/GDDragonBones/gddragonbones/* ${{github.workspace}}/modules/gddragonbones
           cd modules/GDDragonBones
           ls
       # Checkout spine
