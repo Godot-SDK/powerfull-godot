@@ -28,12 +28,13 @@ jobs:
           path: GDDragonBones
       - name: 检查文件
         run: |
+          echo "检查文件"
+          cd GDDragonBones
           ls
-          tree
       #复制文件并按照规范命名
       - name: 复制文件夹
         run: |
-          Copy-Item .\GDDragonBones\dragonbones\* .\modules\GDDragonBones
+          Copy-Item ${{github.workspace}}/GDDragonBones/gddragonbones/* ${{github.workspace}}/modules/GDDragonBones
           cd modules/GDDragonBones
           ls
       # Checkout spine
