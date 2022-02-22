@@ -21,10 +21,21 @@ jobs:
         with:
           repository: godotengine/godot
           ref: ${{env.GODOT_BASE_BRANCH}}
-      # Checkout GDDragonBones
+      # Checkout GDDragonBones并暂时存储到一个目录
       - uses: actions/checkout@v2
         with:
-          path: modules/gddragonbones
+          repository: sanja-sa/gddragonbones
+          path: GDDragonBones
+      - name: 检查文件
+        run: |
+          ls
+          tree
+      #复制文件并按照规范命名 检查
+      - uses: canastro/copy-file-action@master
+        with:
+          source: "GDDragonBones/gddragonbones"
+          target: "modules/GDDragonBones"
+          run: ls
       # Checkout spine
       - uses: actions/checkout@v2
         with:
